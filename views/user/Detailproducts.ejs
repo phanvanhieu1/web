@@ -1,0 +1,82 @@
+<style>
+
+
+</style>
+<%- include("../layout/head") %>
+
+  <link rel="stylesheet" href="css/body.css">
+  <%- include("../layout/nav") %>
+
+    <body>
+      <div class="container" style="margin-top: 2%;">
+        <h3>Chi tiết xe</h3>
+        <div class="row">
+          <div class="col-sm-6">
+            <!-- <img src="/upload/<%- danhsach.image %>" style="width: 100%; padding-top:2% ;"> -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/<%- danhsach.videoid %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="col-sm-6">
+
+            <input class="detail" type="hidden" value="<%- danhsach.id %>" name="idsp">
+            <p style="font-size: 25px;"> <strong>
+                <%- danhsach.name %>
+              </strong></p>
+            <p> <strong>Chiều cao yên :</strong>
+              <%- danhsach.height %>
+            </p>
+            <p> <strong>Trọng tải trung bình :</strong>
+              <%- danhsach.weight %>
+            </p>
+            <p> <strong>Màu sắc :</strong>
+              <%- danhsach.color %>
+            </p>
+            <p> <strong>Động cơ :</strong>
+              <%- danhsach.engine %>
+            </p>
+            <p> <strong>Công suất tối đa :</strong>
+              <%- danhsach.wattage %>
+            </p>
+            <p> <strong>Dung tích :</strong>
+              <%- danhsach.capacity %>
+            </p>
+            <p> <strong>Số chỗ ngồi :</strong>
+              <%- danhsach.seat %>
+            </p>
+            <p> <strong>Giá :</strong> <mark>
+                <%- danhsach.price %>
+              </mark></p>
+            <a href="/add-to-cart/<%- danhsach._id %>" class="btn btn-outline-success"><i class="fa fa-cart-plus">Thêm vào
+                giỏ hàng</i></a>
+          </div>
+        </div>
+        <br>
+        <h2> Bình luận</h2>
+        <br>
+        <form action="/comment" method="POST">
+          <label style="float: left;">
+            <%- user.name %>
+          </label>
+          <input type="hidden" class="form-control" rows="5" value="<%- danhsach._id %>" name="idsp"></textarea>
+          <textarea class="form-control" rows="5" name="note" id="comment"></textarea>
+          <br>
+          <button class="btn-primary" type="submit">Gửi</button>
+        </form>
+        <hr>
+        <% cmt.forEach(function(comment){ %>
+          <div>
+            <strong style="float: left; margin-right: 100px; width: 150px;">
+              <%- comment.uname %>
+            </strong>
+            <p style="float: left;right: 100px; width: 70%;">
+              <%- comment.note %>
+            </p>
+
+            <a href="/delete-comment/<%- comment._id %>">
+              <p style="margin-left: 100px;">Xoá</p>
+            </a>
+            <br>
+          </div>
+          <% }); %>
+      </div>
+      <%- include("../layout/footer") %>
+    </body>
