@@ -142,7 +142,6 @@ cart.post("/menu", function (req, res) {
       msg: req.body.message,
       cart: data,
       st: 0,
-      
       date: Date.now()
     });
     console.log(cart);

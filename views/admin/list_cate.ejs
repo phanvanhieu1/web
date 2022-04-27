@@ -15,7 +15,7 @@
       <%- include("../layout/nav_admin") %>
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h3 class="m-0 font-weight-bold text-primary">Danh sách loại sản phẩm</h3>
+            <h3 class="m-0 font-weight-bold text-primary">Danh sách các hãng xe</h3>
             <% if (message.length > 0) { %>
                 <div class="alert alert-danger"><%= message %></div>
             <% } %>
@@ -25,8 +25,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Loại</th>
+                            <th>STT</th>
+                            <th>Tên hãng</th>
                             <th>Tùy chọn</th>
                        
                         </tr>
