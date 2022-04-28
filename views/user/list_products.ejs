@@ -1,4 +1,64 @@
+<style>
+  .col-sm-3{
+    background-color: #272d40;
+    box-shadow: 0 2px 4px rgb(0, 0, 0, 0.4);
+    width: calc(23% + 4px);
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 350px;
+    position: relative;
+    padding: 20px;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .col-sm-3:hover .item__img {
+    transform: translateY(-50px) rotate(-20deg);
+}
+.col-sm-3:hover .item__title {
+  transform: translate(-38px, -40px);
+}
+.col-sm-3:hover .item__price {
+  transform: translate(-33px, -40px);
+}
+.col-sm-3:hover .item__action {
+  visibility: visible;
+    opacity: 100;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.item__img {
+    width: 100%;
+    transition: 0.5s ;
+}
+
+.item__img img {
+    width: 100%;
+    object-fit: cover;
+}
+.item-moto:hover .item__img {
+    transform: translateY(-50px) rotate(-20deg);
+}
+.item__title, .item__price {
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+    transition: 0.5s;
+}
+.item__title {
+    color: red;
+}
+.item-moto:hover .item__title {
+    transform: translate(-38px, -40px);
+}
+</style>
 <link rel="stylesheet" href="css/body.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <div class="container">
 
     <div class="row" >
@@ -6,18 +66,20 @@
         <% danhsach.forEach(function(product){ %>
         <div class="col-sm-3" style="margin: 2%;" >
                   <div class="thumbnail" >
-                    <img
+                    <div class="item__img">
+                      <img
                       class=""
                       src="upload/<%- product.image %>"
                       alt="Sản phẩm 8"
                      
                       style="margin-right: 6%;  width:100%;height: 200px;"
                     />
+                    </div>
                     <div class="caption">
-                      <h4 class="">
+                      <div class="item__title">
                         <%- product.name %>
-                      </h4>
-                      <p
+                      </div>
+                      <div
                         class=""
                         style="
                           white-space: nowrap;
@@ -26,7 +88,7 @@
                         "
                       >
                         <%- product.note %>
-                      </p>
+                      </div>
                      
                         <div class="">
                           <p class="lead"><%- product.price %> VNĐ</p>
