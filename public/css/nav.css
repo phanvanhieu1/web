@@ -60,6 +60,17 @@ padding: 20px;
 /* nav */
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
+.navbar{
+  background-color: rgb(209, 44, 44);
+  border-bottom: 1px solid #eee;
+  height: 80px;
+  margin-bottom: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
 .navbar-icon-top .navbar-nav .nav-link > .fa {
   position: relative;
   width: 36px;

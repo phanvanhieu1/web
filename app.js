@@ -6,14 +6,17 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var session = require('express-session')
 var logger = require('morgan');
-var ejs = require("ejs");
-var LocalStrategy = require("passport-local");
+// var ejs = require("ejs");
+// var LocalStrategy = require("passport-local");
 var passport = require('passport');
 var flash = require('connect-flash');
 var jwt =require("jsonwebtoken");
 
 // link router
+var question = require('./routes/question.js');
+var vip = require("./routes/vip.js");
 var cate = require("./routes/cate.js");
+var branch = require("./routes/branch.js")
 var view_user = require("./routes/view_user.js");
 var cart = require("./routes/cart.js");
 var detail_notifi = require("./routes/detail-notifi.js");
@@ -30,6 +33,7 @@ var products = require("./models/products.model");
 
 // kết nối database
 var config = require('./config/database.js');
+console.log("conect database");
 var mongoose = require('mongoose');
 
 mongoose.connect(config.url,{ useNewUrlParser: true , useUnifiedTopology: true });
@@ -109,14 +113,17 @@ app.use("/", notifi);
 app.use("/", router);
 app.use("/", contact);
 app.use("/", about);
+app.use("/", question);
+app.use("/",vip);
 app.use("/", client);
 app.use("/", cart);
 app.use("/", view_user);
 app.use("/", product);
 app.use("/", cate);
+app.use("/", branch);
 app.use("/", detail_product);
 // catch 404 and forward to error handler
 
-app.listen(process.env.PORT || 4000)
-console.log("Server is running on port 4000");
+app.listen(process.env.PORT || 3000)
+console.log("Server is running on port 3000");
 

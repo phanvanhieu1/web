@@ -4,6 +4,7 @@ const { check, validationResult } = require('express-validator');
 var  passport = require('passport');
 const userModel = require('../models/user.model');
 const products = require('../models/products.model');
+const branch = require('../models/branch');
 /* GET home page. */
 router.get('/home', function(req,res,next){
   if(req.session.loggin){

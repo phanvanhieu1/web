@@ -17,11 +17,13 @@
        <table id="example" class="display table table-hover table-condensed">
            <thead>
                <tr>
-                   <th>ID</th>
+                   <th>STT</th>
                    <th >Họ tên</th>
                    <th >Địa chỉ</th>
                    <th >Số điện thoại</th>
                    <th >Ngày đặt xe</th>
+                   <th >Chi nhánh nhận xe</th>
+                   <th >Ghi chú</th>
                    <th >Trạng thái</th>
                    <th>Tùy chọn</th>
                </tr>
@@ -35,6 +37,9 @@
                    <td><%= item.address%></td>
                    <td><%= item.sdt%></td>
                    <td><%= item.date.getDate()%>/ <%= item.date.getMonth() +1 %> / <%= item.date.getFullYear()%> </td>
+                   <td><%= item.branch%></td>
+                   <td><%= item.msg%></td>
+
                    <td >
                        <% if(item.st == 0){ %>
                          <span> Đang chờ xử lý</span>

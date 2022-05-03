@@ -3,6 +3,7 @@ var cart = express.Router();
 var GioHang = require("../models/giohang.js");
 var Cart = require("../models/Cart.js");
 var products = require("../models/products.model.js");
+const branchs = require("../models/branch.js");
 var countJson = function (json) {
   var count = 0;
   for (var id in json) {
@@ -48,7 +49,12 @@ cart.get("/order", function (req, res) {
 
   if (req.session.cart) {
     if (countJson(req.session.cart.items) > 0) {
-      res.render("user/order", { errors: null });
+      branchs.find().then(function (data) {
+      res.render("user/order", { 
+        item:data,
+        errors: null 
+        });
+      });
     } else res.redirect("/");
   } else {
     res.redirect("/");
@@ -139,6 +145,7 @@ cart.post("/menu", function (req, res) {
       name: req.body.name,
       address: req.body.address,
       sdt: req.body.phone,
+      branch:req.body.branchID,
       msg: req.body.message,
       cart: data,
       st: 0,

@@ -5,12 +5,8 @@
 <%- include("../layout/nav") %>
 <br>
 <body>
-  
-  <div class="aside">
-    <%- include("./list_cate") %>
-  </div>
-  <div class="content">
-    <div class="container">
+  <div>
+    
       <h3 style="color: red;">Kết quả tìm kiếm :</h3>
       <div class="row">
           <% danhsach.forEach(function(product){ %>
@@ -36,6 +32,16 @@
                         >
                           <%- product.note %>
                         </p>
+                        <div
+                        class=""
+                        style="
+                          white-space: nowrap;
+                          overflow: hidden;
+                          text-overflow: ellipsis;
+                        "
+                      >
+                        Hãng: <%- product.cateID %>
+                      </div>
                        
                           <div class="">
                             <p class="lead"><%- product.price %> VNĐ</p>
@@ -57,7 +63,7 @@
           </div>
           
           
-      </div>
+      
   </div>
   </div>
   

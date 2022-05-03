@@ -1,5 +1,6 @@
 <style>
   .content{
+    margin-top: 96px;
   }
 </style>
 <%- include("../layout/head") %>
@@ -7,17 +8,14 @@
 
 <link rel="stylesheet" href="/css/body.css">
 <%- include("../layout/nav") %>
-<br>
 <body>
-  
-  <div class="aside">
-    <%- include("./list_cate") %>
-  </div>
-  <div class="content">
-    <h3 style="color: black;">Danh sách xe đang cho thuê</h3>
+  <div style="margin-top: 96px;">
+    <marquee style="position: fixed; top: 0; right: 0; left: 0; z-index: 100; "><mark >Bảng giá dưới đây là bảng giá cho thuê ngắn ngày, để lấy giá cho thuê dài ngày vui lòng gọi trực tiếp đến hotline: 0123456789 để được tư vấn miễn phí</mark></marquee>
     <%- include("./list_products") %>
+    
             <!-- pagination -->
 <div class="row" >
+  
   <!-- hiển thị phân trang nếu có trang -->
   <% if(pages > 0) { %>
   <nav class="mx-auto">

@@ -14,12 +14,12 @@
          Thông tin cá nhân
       </h1>
     </div>
-<div class="container" style="font-family: 'Times New Roman', Times, serif;">
+<div class="container" style="font-family: 'Times New Roman', Times, serif; margin-top: 96px;">
     <div class="row">
       <!-- LOCAL INFORMATION -->
       <div class="col-sm-6">
         <div class="well">
-          <h3><span class="fa fa-user"></span> <%= user.name %></h3>
+          <h3><span class="fa"></span> Họ Và Tên: <%= user.name %></h3>
 
           <p style="color: red">
             Email: <%= user.email %>
@@ -59,9 +59,7 @@
           <a style="margin-top: 20px" href="/logout">
             <button type="button" class="btn btn-default">Đăng xuất</button>
           </a>
-          <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal">
-            Xóa tài khoản
-          </button>
+          
         </div>
         <!-- Modal -->
       </div>

@@ -1,11 +1,11 @@
-<style>
- 
-</style>
+<script>
+
+</script>
 <link rel="stylesheet" href="css/nav.css" />
 
 <!------ Include the above in your HEAD tag ---------->
 
-<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark" style="position: fixed; top: 0; right: 0; left: 0; z-index: 100; ">
   <a class="navbar-brand" href="/"
     ><img
       src="../images/logo.png"
@@ -37,6 +37,16 @@
           Danh sách xe
         </a>
       </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Chính sách 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/chinhsach">Chính sách & Thủ tục thuê xe</a>
+          <a class="dropdown-item" href="/baomat">Chính sách bảo mật thông tin cá nhân</a>
+
+        </div>
+      </li>
       <li  i class="nav-item">
         <a class="nav-link" href="/about">
           
@@ -48,6 +58,18 @@
           
           Liên hệ
         </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Blog du lịch
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/homestay">Homestay</a>
+          <a class="dropdown-item" href="/resort">Resort nghỉ dưỡng</a>
+          <a class="dropdown-item" href="/phuot">Phượt</a>
+          <a class="dropdown-item" href="/dulich">Du lịch</a>
+
+        </div>
       </li>
     </ul>
     <ul class="navbar-nav">
@@ -90,27 +112,6 @@
             <i class="fa fa-id-carda-o" aria-hidden="true"></i>
             Trang cá nhân
           </a>
-          <a class="dropdown-item" href="/logout">
-            <i class="fa fa-sign-out"> </i>
-            Đăng xuất</a
-          >
-        </div>
-      </li>
-      <% } %>
-
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <i class="fa fa-carta-plus"> </i>
-          Giỏ hàng
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/shopping-cart">
             <i class="fa fa-carta-plus"> </i>
             Giỏ hàng</a
@@ -119,8 +120,16 @@
             <i class="fa fa-historya"> </i>
             Lịch sử đặt xe</a
           >
+          <a class="dropdown-item" href="/logout">
+            <i class="fa fa-sign-out"> </i>
+            Đăng xuất</a
+          >
         </div>
       </li>
+      <% } %>
+
+      
+        
     </ul>
 
     <form class="form-inline my-2 my-lg-0" action="/Search" method="POST">
@@ -128,7 +137,7 @@
         class="form-control mr-sm-2"
         name="name"
         type="text"
-        placeholder="Search"
+        placeholder="Tìm kiếm"
         aria-label="Search"
       />
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">

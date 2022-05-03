@@ -4,7 +4,7 @@ const products = require("../models/products.model");
 var multer = require("multer");
 const { response } = require("express");
 var cates = require("../models/Cate.js");
-const cate = require("./cate");
+const branch = require("../models/branch")
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {

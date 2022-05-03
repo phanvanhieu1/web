@@ -1,36 +1,49 @@
 <style>
    
-  table {
-    font-family: "Times New Roman", Times, serif;
-    width: 100%;
-    height: auto;
-  }
-  th {
-    font-size: 25px;
-    text-align: center;
-  }
-  .cate {
-    font-size: 20px;
-    padding-left: 10%;
-  }
-</style>
-<link rel="stylesheet" href="css/body.css">
-<table>
-
-  <tr>
-    <th>
-      Lọc theo hãng
-      <hr />
-    </th>
-  </tr>
-  <% item.forEach(function(cate){ %>
-  <tr> 
-    <td>
-      <div class="cate">   
-        <a><%= cate.namecate %> <br> </a>    
-      </div>
-      <hr />
-    </td> 
-  </tr>
-  <% }); %>
-</table>
+    table {
+      font-family: "Times New Roman", Times, serif;
+      width: 100%;
+      height: auto;
+    }
+    th {
+      font-size: 25px;
+      text-align: center;
+    }
+    .cate {
+      font-size: 20px;
+      padding-left: 10%;
+    }
+  </style>
+  <link rel="stylesheet" href="css/body.css">
+  <table>
+  
+    <tr>
+      <th>
+        Danh mục sản phẩm
+        <hr />
+      </th>
+    </tr>
+    <% item.forEach(function(cate){ %>
+    <tr> 
+      <td>
+        <div class="cate">   
+          <a onclick=""><%= cate.namecate %> <br> </a>    
+        </div>
+        <hr />
+      </td> 
+    </tr>
+    <% }); %>
+  </table>
+  <script>
+      function loadproduct() {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("demo").innerHTML =
+              this.responseText;
+          }
+        };
+        xhttp.open("GET", "views/user/list_cate.ejs", true);
+        xhttp.send();
+      }
+  </script>
