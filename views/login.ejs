@@ -1,42 +1,89 @@
-<link rel="stylesheet" href="css/body.css">
-<style>
-body {
-  margin: 0;
-  padding: 0;
- 
-  background: linear-gradient(to right, #b92b27, #1565c0)
-}
-</style>
 
-<!-- <link rel="stylesheet" href="/css/login.css">  -->
-<%- include("./layout/head") %>
-
-  <%- include("./layout/nav") %>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" />
+</head>
   <body>
+    <nav class="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark" style="position: fixed; top: 0; right: 0; left: 0; z-index: 100; ">
 
-
-  <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-          
-                <form class="box" action="/signin" method="POST">
-                    <h2 style="color: white;">Đăng nhập</h2>
-                    <p class="text-muted">             
-                      <% if (message.length > 0) { %>
-                        <div class="alert alert-danger"><%= message %></div>
-                    <% } %></p>
-                    <input type="text" name="email"   placeholder="Email">
-                    <input type="password" name="password" placeholder="Mật Khẩu"> 
-                  
-                    <input type="submit" value="Đăng nhập" >
-                 <a class="" href="/register">Bạn chưa có tài khoản ?</a>
-                </form>
+      <a class="navbar-brand" href="/"
+      ><img
+        src="../images/logo.png"
+        style="border-radius: 15px; width: 80px; height: 70px"
+    /></a>
+    </nav>
+    
+    <div class="auth-wrapper">
+      <div class="auth-container">
+                        <div class="auth-action-left">
+                            <div class="auth-form-outer">
+                                <p class="text-muted">             
+                                    <% if (message.length > 0) { %>
+                                      <div class="alert alert-danger"><%= message %></div>
+                                  <% } %></p>
+                                <h2 class="auth-form-title">
+                                    Đăng Nhập
+                                </h2>
+                                <div class="auth-external-container">
+                                    <div class="auth-external-list">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-google"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <p class="auth-sgt">đăng nhập vào tài khoản:</p>
+                                </div>
+                                <form action="/signin" method="POST">
+                                    <input type="text" name="email"   placeholder="Email">
+                                    <div class="input-icon">
+                                        <input type="password" name="password" placeholder="Mật Khẩu">
+                                        <i class="fa fa-eye show-password"></i>
+                                    </div>
+                                    <label class="btn active">
+                                        <input type="checkbox" name='email1' checked>
+                                        <i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i> 
+                                        <span> Lưu mật khẩu.</span>
+                                    </label>
+                                    <div class="footer-action">
+                                        <input type="submit" value="Đăng nhập" class="auth-submit">
+                                        <a href="/register" class="auth-btn-direct">Đăng Ký</a>
+                                    </div>
+                                </form>
+                                <div class="auth-forgot-password">
+                                    <a class="" href="/register">Bạn chưa có tài khoản ?</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="auth-action-right">
+                            <div class="auth-image">
+                                <img src="/images/rose.jpg" alt="login">
+                            </div>
+                        </div>
+                    
+                
+              </div>
+            </div>
+            <script>
+                var password = document.getElementsByClassName('show-password')[0];
+                var input = document.getElementsByTagName('input')[1];
+                password.addEventListener('click', function(){
+                    if(input.type === 'password'){
+                        input.type = 'text';
+                    }else{
+                        input.type = 'password';
+                    }
+                });
+            </script>
         
-        </div>
-    </div>
-</div>
-
 </body>
+</html>
 
    
 

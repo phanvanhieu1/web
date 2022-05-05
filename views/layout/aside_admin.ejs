@@ -23,7 +23,7 @@
       <tr>
         <th>
       
-        Admin
+        Admin: <%= user.name %>
       
           <hr />
         </th>
@@ -94,11 +94,14 @@
       </tr>
       <tr>
         <td>
-          <div class=" btn dropdown dropright">
-            <a href="/view_user" >   
-           Quản lý khách hàng
-    
-          </a>
+          <div class="dropdown dropright">
+            <p class="btn">
+              <a href="/view_user" >   
+             Quản lý khách hàng
+      
+            </a>
+
+            </p>
           </div>
        
         </td>
@@ -107,7 +110,7 @@
         <td>
           <div class="dropdown dropright">
             <p class="btn" >
-      <a href="/list_order">      Đơn hàng </a> 
+      <a href="/list_order">Đơn hàng </a> 
             </p>
          
           </div>

@@ -2,10 +2,10 @@
   
 </style>
 <%- include("../layout/head") %>
+<%- include("../layout/nav") %>
 
   <link rel="stylesheet" href="css/body.css">
   
-  <%- include("../layout/nav") %>
 
     <body>
       <div class="container" style="margin-top:96px;">
@@ -51,6 +51,9 @@
                     </p></li>
                     <li><p> <strong>Số chỗ ngồi :</strong>
                       <%- danhsach.seat %>
+                    </p></li>
+                    <li><p> <strong>Hãng :</strong>
+                      <%- danhsach.cateID %>
                     </p></li>
                     
                   </ul>
