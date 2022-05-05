@@ -2,7 +2,8 @@
 // load những thư viện chúng ta cần
 var mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
-mongoose.plugin(slug);  // plugin slug
+
+const mongooseDelete = require('mongoose-delete');
 
 // định nghĩ cấu trúc user model
 var Schema = mongoose.Schema;
@@ -28,5 +29,11 @@ var products = new Schema({
     
 
 }); 
+//add plugin
+mongoose.plugin(slug);  // plugin slug
+products.plugin(mongooseDelete,{
+    deletedAt : true,
+    overrideMethods: 'all',
+});
 
 module.exports = mongoose.model('products', products);

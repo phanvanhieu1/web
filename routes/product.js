@@ -6,6 +6,7 @@ const { response } = require("express");
 var cates = require("../models/Cate.js");
 const branch = require("../models/branch")
 
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/upload");
@@ -201,7 +202,39 @@ product.get("/admin/list-product/:page", (req, res) => {
     res.redirect("/home");
   }
 });
-
+//mới thêm
+product.get("/admin/trash-product", (req, res) => {
+  if (req.session.loggin) {
+    user = req.user;
+    if (user.role == "admin") {
+      let perPage = 12; // số lượng sản phẩm xuất hiện trên 1 page
+      let page = req.params.page || 1;
+      var message = req.flash("error");
+      products
+        .findDeleted({}) // find tất cả các data
+        .sort({ date: "descending" })
+        .skip(perPage * page - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
+        .limit(perPage)
+        .exec((err, data) => {
+          products.countDocuments((err, count) => {
+            // đếm để tính có bao nhiêu trang
+            if (err) return next(err);
+            
+            res.render("admin/trash-product", {
+              danhsach: data,
+              message: message,
+              current: page, // page hiện tại
+              pages: Math.ceil(count / perPage),
+            }); // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...
+          });
+        });
+    } else {
+      res.redirect("/home");
+    }
+  } else {
+    res.redirect("/home");
+  }
+});
 product.get("/admin/insert-product", (req, res) => {
   if (req.session.loggin) {
     user = req.user;
@@ -218,6 +251,39 @@ product.get("/admin/insert-product", (req, res) => {
     } else {
       res.redirect("/home");
     }
+  } else {
+    res.redirect("/home");
+  }
+});
+//restore
+product.post("/restore-product/:id", (req, res) => {
+  if (req.session.loggin) {
+    products.restore({ _id: req.params.id }, function (err) {
+      if (err) {
+        res.redirect("/admin/list-product");
+      } else {
+        let perPage = 12; // số lượng sản phẩm xuất hiện trên 1 page
+        let page = req.params.page || 1;
+    
+        products
+          .find() // find tất cả các data
+          .sort({ date: "descending" })
+          .skip(perPage * page - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
+          .limit(perPage)
+          .exec((err, data) => {
+            products.countDocuments((err, count) => {
+              // đếm để tính có bao nhiêu trang
+              if (err) return next(err);
+              res.render("admin/list-product", {
+                danhsach: data,
+                message : "Khôi phục thành công",
+                current: page, // page hiện tại
+                pages: Math.ceil(count / perPage),
+              }); // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...
+            });
+          });
+      }
+    });
   } else {
     res.redirect("/home");
   }
@@ -395,7 +461,41 @@ product.post("/edit-product", (req, res) => {
     res.redirect("/home");
   }
 });
+//xóa giả
 product.get("/delete-product/:id", (req, res) => {
+  if (req.session.loggin) {
+    products.delete({ _id: req.params.id }, function (err) {
+      if (err) {
+        res.redirect("/admin/list-product");
+      } else {
+        let perPage = 12; // số lượng sản phẩm xuất hiện trên 1 page
+        let page = req.params.page || 1;
+    
+        products
+          .find() // find tất cả các data
+          .sort({ date: "descending" })
+          .skip(perPage * page - perPage) // Trong page đầu tiên sẽ bỏ qua giá trị là 0
+          .limit(perPage)
+          .exec((err, data) => {
+            products.countDocuments((err, count) => {
+              // đếm để tính có bao nhiêu trang
+              if (err) return next(err);
+              res.render("admin/list-product", {
+                danhsach: data,
+                message : "Đã thêm vào thùng rác, bạn có thể vào thùng rác để khôi phục",
+                current: page, // page hiện tại
+                pages: Math.ceil(count / perPage),
+              }); // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...
+            });
+          });
+      }
+    });
+  } else {
+    res.redirect("/home");
+  }
+});
+//xóa thật
+product.post("/delete-product/:id/deletereal", (req, res) => {
   if (req.session.loggin) {
     products.deleteOne({ _id: req.params.id }, function (err) {
       if (err) {
@@ -415,7 +515,7 @@ product.get("/delete-product/:id", (req, res) => {
               if (err) return next(err);
               res.render("admin/list-product", {
                 danhsach: data,
-                message : "Xóa thành công",
+                message : "Đã xóa thành công",
                 current: page, // page hiện tại
                 pages: Math.ceil(count / perPage),
               }); // Trả về dữ liệu các sản phẩm theo định dạng như JSON, XML,...

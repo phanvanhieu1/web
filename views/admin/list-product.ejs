@@ -18,9 +18,13 @@
           <div class="alert alert-danger"><%= message %></div>
       <% } %>
         <div class="container">
+          <div>
+            <h3>Danh sách xe đang cho thuê</h3>
+            <a href="/admin/trash-product">Xem Thùng rác</a> hoặc <a href="/admin/insert-product">Thêm xe mới</a>
+
+          </div>
     
           <div class="row" style="margin-left: -5%" >
-            
               <% danhsach.forEach(function(product){ %>
               <div class="col-sm-3">
                         <div class="thumbnail" >
@@ -59,9 +63,8 @@
                       
                           </div>
                         </div>
-                  
-                   
                     </div> 
+                    
                     <% }); %>
               </div>
               

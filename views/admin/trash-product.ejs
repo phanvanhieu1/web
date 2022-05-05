@@ -1,0 +1,111 @@
+
+<%- include("../layout/head") %>
+
+
+
+<link rel="stylesheet" href="/css/body.css">
+<body>
+  
+  <div class="aside" style="border: none;">
+    <%- include("../layout/aside_admin") %>
+  </div>
+
+    <div class="content">
+      <%- include("../layout/nav_admin") %>
+    
+      <div class="profile">
+        <% if (message.length > 0) { %>
+          <div class="alert alert-danger"><%= message %></div>
+      <% } %>
+        <div class="container">
+            <div>
+                <h3>Danh sách xe đã xóa</h3>
+                <a href="/admin/list-product">Xem danh sách xe</a> hoặc <a href="/admin/insert-product">Thêm xe mới</a>
+  
+              </div>
+          <div class="row" style="margin-left: -5%" >
+            
+              <% danhsach.forEach(function(product){ %>
+              <div class="col-sm-3">
+                        <div class="thumbnail" >
+                          <img
+                            class=""
+                            src="/upload/<%- product.image %>"
+                            alt=""
+                            
+                            style="padding-right: 6%; width: 100%; height: 200px;"
+                          />
+                          <div class="caption">
+                            <h4 class="">
+                              <%- product.name %>
+                            </h4>
+                            <p
+                              class=""
+                              style="
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                              "
+                            >
+                              <%- product.note %>
+                            </p>
+                           
+                              <div class="">
+                                <p class="lead"><%- product.price %> VNĐ</p>
+                              </div>
+                              <div style="margin-bottom: 5%;"> 
+                                <a class="btn btn-success btn-restore" href="" data-id="<%- product._id %>">
+                               Khôi phục</a> 
+                        
+                               <a class="btn btn-success btn-delete" href="" data-id="<%- product._id %>">
+                              Xoá vĩnh viễn</a> 
+                           </div>
+                      
+                          </div>
+                        </div>
+                    </div> 
+                    
+                    <% }); %>
+              </div>
+              
+              
+          </div>
+      </div>
+    </div>
+    <form name="delete-product-form" method="post"></form>
+    <form name="restore-product-form" method="post"></form>
+
+</body>
+<script>
+    var restoreForm = document.forms['restore-product-form'];
+    var deleteForm = document.forms['delete-product-form'];
+    var restoreBtn=$('.btn-restore');
+    var deleteBtn=$('.btn-delete');
+    //restore btn click
+    restoreBtn.click(function(e) {
+        e.preventDefault();
+        var productID=$(this).data('id');
+        restoreForm.action='/restore-product/'+productID + '?_method=PATCH';
+        restoreForm.submit();  
+    });
+    //delete btn click
+    deleteBtn.click(function(e) {
+        e.preventDefault();
+        var productID=$(this).data('id');
+        deleteForm.action='/delete-product/'+productID + '/deletereal?_method=DELETE';
+        deleteForm.submit();
+    });
+</script>
+
+
+
+  
+ 
+      
+  
+      
+       
+  
+
+
+ 
