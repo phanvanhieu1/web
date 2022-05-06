@@ -1,106 +1,112 @@
-<style>
-  
-</style>
+
 <%- include("../layout/head") %>
+<link rel="stylesheet" href="css/home.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/main.css">
+<link rel="stylesheet" href="./css/grid.css">
+<link rel="stylesheet" href="./font/fontawesome-free-6.0.0-web/fontawesome-free-6.0.0-web/css/all.min.css">
+
 <%- include("../layout/nav") %>
+<main id="page-content" class="page-content">
+  <div class="about-us">
+    <div class="container" style="margin-top:96px;">
+  <marquee style="position: fixed; top: 0; right: 0; left: 0; z-index: 100; "><mark>Bảng giá dưới đây là bảng giá cho thuê ngắn ngày, để lấy giá cho thuê dài ngày vui lòng gọi trực tiếp đến hotline: 0123456789 để được tư vấn miễn phí</mark></marquee>
 
-  <link rel="stylesheet" href="css/body.css">
-  
+      <div class="row" style="padding-bottom: 100px;">
+        
+        <div class="col-sm-8">
 
-    <body>
-      <div class="container" style="margin-top:96px;">
-    <marquee style="position: fixed; top: 0; right: 0; left: 0; z-index: 100; "><mark>Bảng giá dưới đây là bảng giá cho thuê ngắn ngày, để lấy giá cho thuê dài ngày vui lòng gọi trực tiếp đến hotline: 0123456789 để được tư vấn miễn phí</mark></marquee>
-
-        <div class="row" style="padding-bottom: 100px;">
+          <input class="detail" type="hidden" value="<%- danhsach.id %>" name="idsp">
           
-          <div class="col-sm-8">
-
-            <input class="detail" type="hidden" value="<%- danhsach.id %>" name="idsp">
+              <p>
+                Chỉ với <strong style="font-size: 25px; color: deepskyblue;"><%- danhsach.price %>₫/ngày</strong> bạn đã có thể sỡ hữu ngay em <strong style="font-size: 25px; color:chocolate"><%- danhsach.name %></strong> với các thông số cực kỳ ổn áp sau đây:
+               </p>
+               <p>
+                 Để rõ hơn về xe, vui lòng xem video ở bên
+               </p>
             
-                <p>
-                  Chỉ với <strong style="font-size: 25px; color: deepskyblue;"><%- danhsach.price %>₫/ngày</strong> bạn đã có thể sỡ hữu ngay em <strong style="font-size: 25px; color:chocolate"><%- danhsach.name %></strong> với các thông số cực kỳ ổn áp sau đây:
-                 </p>
-                 <p>
-                   Để rõ hơn về xe, vui lòng xem video ở bên
-                 </p>
-              
-            
-              <h2 style="color: crimson;">Thông số cơ bản</h2>
-              <section class="index-module_col__2EQm9 index-module_c-12__u7UXF index-module_m-12__2CxUL index-module_l-12__340Ve">
-                <ul class="CourseDetail_list__pdfCp undefined d-flex p-0">
-                  <ul class="p-0" style="list-style: none;">
-                    <li><p> <strong>Chiều cao yên :</strong>
-                      <%- danhsach.height %>
-                    </p></li>
-                    <li><p> <strong>Trọng tải trung bình :</strong>
-                      <%- danhsach.weight %>
-                    </p></li>
-                    <li><p> <strong>Màu sắc :</strong>
-                      <%- danhsach.color %>
-                    </p></li>
-                    <li><p> <strong>Động cơ :</strong>
-                      <%- danhsach.engine %>
-                    </p></li>
-                  </ul>
-                  <ul class="p-0" style="list-style: none;">
-                    <li><p> <strong>Công suất tối đa :</strong>
-                      <%- danhsach.wattage %>
-                    </p></li>
-                    <li><p> <strong>Dung tích :</strong>
-                      <%- danhsach.capacity %>
-                    </p></li>
-                    <li><p> <strong>Số chỗ ngồi :</strong>
-                      <%- danhsach.seat %>
-                    </p></li>
-                    <li><p> <strong>Hãng :</strong>
-                      <%- danhsach.cateID %>
-                    </p></li>
-                    
-                  </ul>
+          
+            <h2 style="color: crimson;">Thông số cơ bản</h2>
+            <section class="index-module_col__2EQm9 index-module_c-12__u7UXF index-module_m-12__2CxUL index-module_l-12__340Ve">
+              <ul class="CourseDetail_list__pdfCp undefined d-flex p-0">
+                <ul class="p-0" style="list-style: none;">
+                  <li><p> <strong>Chiều cao yên :</strong>
+                    <%- danhsach.height %>
+                  </p></li>
+                  <li><p> <strong>Trọng tải trung bình :</strong>
+                    <%- danhsach.weight %>
+                  </p></li>
+                  <li><p> <strong>Màu sắc :</strong>
+                    <%- danhsach.color %>
+                  </p></li>
+                  <li><p> <strong>Động cơ :</strong>
+                    <%- danhsach.engine %>
+                  </p></li>
                 </ul>
-              </section>
-            
-          </div>
-          <div class="col-sm-4 text-center">
-            <!-- <img src="/upload/<%- danhsach.image %>" style="width: 100%; padding-top:2% ;"> -->
-            <iframe width="100%" height="100%" class="rounded" src="https://www.youtube.com/embed/<%- danhsach.videoid %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <p style="margin-top: 5px;"><mark style="font-size: 25px; color: tomato;">
-              <%- danhsach.price %> <strong>VND</strong> 
-            </mark>/Ngày</p>
-            <a href="/add-to-cart/<%- danhsach._id %>" class="btn btn-outline-dark">Thêm vào
-              giỏ hàng</a>
-          </div>
+                <ul class="p-0" style="list-style: none;">
+                  <li><p> <strong>Công suất tối đa :</strong>
+                    <%- danhsach.wattage %>
+                  </p></li>
+                  <li><p> <strong>Dung tích :</strong>
+                    <%- danhsach.capacity %>
+                  </p></li>
+                  <li><p> <strong>Số chỗ ngồi :</strong>
+                    <%- danhsach.seat %>
+                  </p></li>
+                  <li><p> <strong>Hãng :</strong>
+                    <%- danhsach.cateID %>
+                  </p></li>
+                  
+                </ul>
+              </ul>
+            </section>
+          
         </div>
-        <br>
-        <div>
-          <h2> Bình luận</h2>
-          <br>
-          <form action="/comment" method="POST">
-            <label style="float: left;">
-              <%- user.name %>
-            </label>
-            <input type="hidden" class="form-control" rows="5" value="<%- danhsach._id %>" name="idsp"></textarea>
-            <textarea class="form-control" rows="5" name="note" id="comment"></textarea>
-            <br>
-            <button class="btn-primary" type="submit">Gửi</button>
-          </form>
-          <hr>
-          <% cmt.forEach(function(comment){ %>
-            <div>
-              <strong style="float: left; margin-right: 100px; width: 150px;">
-                <%- comment.uname %>
-              </strong>
-              <p style="float: left;right: 100px; width: 70%;">
-                <%- comment.note %>
-              </p>
-  
-              <!-- <a href="/delete-comment/<%- comment._id %>">
-                <p style="margin-left: 100px;">Xoá</p>
-              </a> -->
-              <br>
-            </div>
+        <div class="col-sm-4 text-center">
+          <!-- <img src="/upload/<%- danhsach.image %>" style="width: 100%; padding-top:2% ;"> -->
+          <iframe width="100%" height="100%" class="rounded" src="https://www.youtube.com/embed/<%- danhsach.videoid %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <p style="margin-top: 5px;"><mark style="font-size: 25px; color: tomato;">
+            <%- danhsach.price %> <strong>VND</strong> 
+          </mark>/Ngày</p>
+          <a href="/add-to-cart/<%- danhsach._id %>" class="btn btn-outline-dark">Thêm vào
+            giỏ hàng</a>
         </div>
-          <% }); %>
       </div>
-      <%- include("../layout/footer") %>
-    </body>
+      <br>
+      <div>
+        <h2> Bình luận</h2>
+        <br>
+        <form action="/comment" method="POST">
+          <label style="float: left;">
+            <%- user.name %>
+          </label>
+          <input type="hidden" class="form-control" rows="5" value="<%- danhsach._id %>" name="idsp"></textarea>
+          <textarea class="form-control" rows="5" name="note" id="comment"></textarea>
+          <br>
+          <button class="btn-primary" type="submit">Gửi</button>
+        </form>
+        <hr>
+        <% cmt.forEach(function(comment){ %>
+          <div>
+            <strong style="float: left; margin-right: 100px; width: 150px;">
+              <%- comment.uname %>
+            </strong>
+            <p style="float: left;right: 100px; width: 70%;">
+              <%- comment.note %>
+            </p>
+
+            <!-- <a href="/delete-comment/<%- comment._id %>">
+              <p style="margin-left: 100px;">Xoá</p>
+            </a> -->
+            <br>
+          </div>
+      </div>
+        <% }); %>
+    </div>
+    <%- include("../layout/footer") %>
+  </div>
+  
+
+</main>
