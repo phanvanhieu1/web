@@ -27,7 +27,7 @@
     <tr> 
       <td>
         <div class="cate">   
-          <a onclick=""><%= cate.namecate %> <br> </a>    
+          <a href="" onclick="loadproduct"><%= cate.namecate %> <br> </a>    
         </div>
         <hr />
       </td> 
@@ -35,15 +35,15 @@
     <% }); %>
   </table>
   <script>
-      function loadproduct() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-          if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("demo").innerHTML =
-              this.responseText;
-          }
-        };
-        xhttp.open("GET", "views/user/list_cate.ejs", true);
-        xhttp.send();
-      }
+    function loadproduct() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("demo").innerHTML = this.responseText;
+        }
+      };
+      xhttp.open("GET", "views/user/list_products.ejs", true);
+      xhttp.send();
+    }
+    
   </script>
